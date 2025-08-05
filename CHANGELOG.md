@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.8.0 (2025-08-05)
+
+### Features
+
+- **ci**: Fast-forward merge
+  ([`cb99896`](https://github.com/JamesAFarrell/my-python-package-2/commit/cb99896764356c0372f0da6595981e3142b505ff))
+
+
 ## v1.7.0 (2025-08-05)
 
 ### Features
