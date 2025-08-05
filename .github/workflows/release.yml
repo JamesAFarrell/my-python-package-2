@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python (optional, if needed for your tools)
+      - name: Setup Python (optional, if needed)
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -38,11 +38,25 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.release.outputs.tag }}
 
-      - name: Sync main to dev
+  sync-branches:
+    needs: release-and-deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge main into dev
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin dev
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          
+          git fetch origin
           git checkout dev
-          git merge origin/main --no-edit || echo "No changes to merge"
+          git pull origin dev
+          
+          git merge origin/main --no-ff -m "chore(release): merge main into dev after release [skip ci]"
           git push origin dev
