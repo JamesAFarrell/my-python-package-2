@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.3.0 (2025-08-05)
+
+### Bug Fixes
+
+- Remove build command
+  ([`11dbb62`](https://github.com/JamesAFarrell/my-python-package-2/commit/11dbb627af6cafd4b8c824963bf218e6a3f57a60))
+
+
 ## v1.2.0 (2025-08-05)
 
 ### Bug Fixes
