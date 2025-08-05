@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v1.4.0 (2025-08-05)
+
+### Chores
+
+- Meaningless space
+  ([`d87131a`](https://github.com/JamesAFarrell/my-python-package-2/commit/d87131ab0a930bd4bd95eedb9ced2229c6344b5c))
+
+### Features
+
+- **sdc**: Add data privacy module
+  ([`1818527`](https://github.com/JamesAFarrell/my-python-package-2/commit/18185270ddd13201faca831f26985af41baeeb9a))
+
+
 ## v1.3.1 (2025-08-05)
 
 ### Bug Fixes
