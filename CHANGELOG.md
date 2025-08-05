@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.5.0 (2025-08-05)
+
+### Features
+
+- **sdc**: Update sync
+  ([`1a826a6`](https://github.com/JamesAFarrell/my-python-package-2/commit/1a826a6f5baeaea7211e09e9431915ad1c6564fe))
+
+
 ## v1.4.0 (2025-08-05)
 
 ### Chores
