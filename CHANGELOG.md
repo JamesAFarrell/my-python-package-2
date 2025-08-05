@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.7.0 (2025-08-05)
+
+### Features
+
+- Update github workflow
+  ([`2a3a31c`](https://github.com/JamesAFarrell/my-python-package-2/commit/2a3a31cac93b22b6d4e9a3752ab58f7b035d3394))
+
+
 ## v1.6.0 (2025-08-05)
 
 
