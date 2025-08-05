@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.3.1 (2025-08-05)
+
+### Bug Fixes
+
+- Remove space
+  ([`04746ac`](https://github.com/JamesAFarrell/my-python-package-2/commit/04746acb25a224d748223673a0fb9723ff02045a))
+
+
 ## v1.3.0 (2025-08-05)
 
 ### Bug Fixes
