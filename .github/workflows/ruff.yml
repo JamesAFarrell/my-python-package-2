@@ -25,5 +25,9 @@ jobs:
       - name: Install only ruff (lint group)
         run: poetry install --no-root --with lint
 
-      - name: Run Ruff
-        run: poetry run ruff check .
+      - name: Lint with Ruff
+        run: ruff check .
+
+      - name: Check formatting
+        run: ruff format --check .
+
