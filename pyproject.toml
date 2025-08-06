@@ -1,19 +1,31 @@
 [tool.poetry] 
-name = "your-package-name"
+name = "my_python_package_2"
 version = "1.8.0"  
 description = "Your package description"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
+packages = [{ include = "hds_functions", from = "src" }]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pyspark = "3.5.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+pytest-cov = "^4.1"
+pandas = ">=1.0.5"
+pyarrow = ">=4.0.0"
+numpy = "<2.0.0"
+python-semantic-release = "^8.0"
+build = "^1.0"
 
 [tool.semantic_release]
+version_source = "tag"
 version_toml = ["pyproject.toml:tool.poetry.version"] 
 branch = "main"
 upload_to_pypi = false
 upload_to_release = true
-version_source = "tag"
 commit_version_number = true
 commit_message = "chore(release): v{version} [skip ci]"
 commit_author = "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
@@ -33,6 +45,11 @@ allowed_tags = [
 ]
 minor_tags = ["feat"]
 patch_tags = ["fix", "perf"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=hds_functions --cov-report=term-missing"
+testpaths = ["tests"]
+pythonpath = ["src"]
 
 [build-system]
 requires = ["poetry-core"]
