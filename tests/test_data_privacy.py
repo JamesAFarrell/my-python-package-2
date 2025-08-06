@@ -143,10 +143,12 @@ def test_redact_low_counts_errors(spark):
 def test_round_and_redact_integration(spark):
     """Integration test chaining rounding and redaction with .transform()."""
     data = [(1, 7), (2, 17), (3, 22)]
-    schema = T.StructType([
-        T.StructField("id", T.LongType(), True),
-        T.StructField("count", T.LongType(), True),
-    ])
+    schema = T.StructType(
+        [
+            T.StructField("id", T.LongType(), True),
+            T.StructField("count", T.LongType(), True),
+        ]
+    )
     df = spark.createDataFrame(data, schema)
 
     result = df.transform(
