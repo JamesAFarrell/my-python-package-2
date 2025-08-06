@@ -1,0 +1,170 @@
+name: Lint, Test, Release & Sync
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Ruff Lint & Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pypoetry
+            ~/.cache/pip
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          export PATH="$HOME/.local/bin:$PATH"
+
+      - name: Install lint dependencies (ruff)
+        run: poetry install --no-root --with lint
+
+      - name: Lint with Ruff
+        run: poetry run ruff check .
+
+      - name: Check formatting with Ruff
+        run: poetry run ruff format --check .
+
+  test:
+    name: Pytest Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Cache Spark
+        id: cache-spark
+        uses: actions/cache@v3
+        with:
+          path: spark-3.5.1-bin-hadoop3
+          key: spark-3.5.1-${{ runner.os }}
+
+      - name: Download and extract Spark (if cache missed)
+        if: steps.cache-spark.outputs.cache-hit != 'true'
+        run: |
+          curl -sL https://archive.apache.org/dist/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz -o spark.tgz
+          tar -xzf spark.tgz
+          rm spark.tgz
+
+      - name: Save Spark to cache
+        if: steps.cache-spark.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v3
+        with:
+          path: spark-3.5.1-bin-hadoop3
+          key: spark-3.5.1-${{ runner.os }}
+
+      - name: Set environment variables
+        run: |
+          echo "SPARK_HOME=$(pwd)/spark-3.5.1-bin-hadoop3" >> $GITHUB_ENV
+          echo "$(pwd)/spark-3.5.1-bin-hadoop3/bin" >> $GITHUB_PATH
+          echo "PYARROW_IGNORE_TIMEZONE=1" >> $GITHUB_ENV
+
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
+      - name: Install dependencies with Poetry
+        run: poetry install --with dev
+
+      - name: Run tests
+        run: poetry run pytest
+
+  release-and-deploy:
+    name: Release and Deploy
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    if: success()
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run semantic release
+        id: release
+        uses: python-semantic-release/python-semantic-release@v10.3.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git_committer_name: "github-actions"
+          git_committer_email: "actions@users.noreply.github.com"
+
+      - name: Publish release assets
+        if: steps.release.outputs.released == 'true'
+        uses: python-semantic-release/publish-action@v10.3.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.release.outputs.tag }}
+
+  sync-branches:
+    name: Sync main with dev
+    needs: release-and-deploy
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge main into dev (fast-forward only)
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+
+          git fetch origin
+          git checkout dev
+          git pull origin dev
+          git merge --ff-only origin/main || echo "Nothing to sync"
+          git push origin dev
