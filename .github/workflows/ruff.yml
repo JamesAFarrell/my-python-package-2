@@ -26,8 +26,8 @@ jobs:
         run: poetry install --no-root --with lint
 
       - name: Lint with Ruff
-        run: ruff check .
+        run: poetry run ruff check .
 
       - name: Check formatting
-        run: ruff format --check .
+        run: poetry run ruff format --check .
 
