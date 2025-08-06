@@ -10,11 +10,11 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.10"
 pyspark = "3.5.1"
+pandas = ">=1.0.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
 pytest-cov = "^4.1"
-pandas = ">=1.0.5"
 pyarrow = ">=4.0.0"
 numpy = "<2.0.0"
 python-semantic-release = "^8.0"
