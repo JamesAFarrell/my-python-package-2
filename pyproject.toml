@@ -20,6 +20,9 @@ numpy = "<2.0.0"
 python-semantic-release = "^8.0"
 build = "^1.0"
 
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.4.4"
+
 [tool.semantic_release]
 version_source = "tag"
 version_toml = ["pyproject.toml:tool.poetry.version"] 
