@@ -1,6 +1,6 @@
 [tool.poetry] 
 name = "my_python_package_2"
-version = "1.8.0"  
+version = "1.9.0"  
 description = "Your package description"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"

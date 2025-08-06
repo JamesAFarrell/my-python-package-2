@@ -2,6 +2,78 @@
 
 <!-- version list -->
 
+## v1.9.0 (2025-08-06)
+
+### Bug Fixes
+
+- Add __all__
+  ([`aca5e3d`](https://github.com/JamesAFarrell/my-python-package-2/commit/aca5e3dbebf671fda40010a8f09d016e5ce8cf52))
+
+- Add lint dependencies
+  ([`67323fe`](https://github.com/JamesAFarrell/my-python-package-2/commit/67323fe8da85db72dc5fa4d944007751ac209c7e))
+
+- Add pandas to dependencies
+  ([`99bdf75`](https://github.com/JamesAFarrell/my-python-package-2/commit/99bdf75eafa92a16e61c5c9b63cd3a00878bf8ed))
+
+- Add poetry run
+  ([`1d95468`](https://github.com/JamesAFarrell/my-python-package-2/commit/1d954685e0405405c02cf3bb5daf4069387a481e))
+
+- Add reference main
+  ([`2245d02`](https://github.com/JamesAFarrell/my-python-package-2/commit/2245d029d0b0e58f2262ddf04cb28d47b317d174))
+
+- Cast to long
+  ([`5dc5e69`](https://github.com/JamesAFarrell/my-python-package-2/commit/5dc5e691edbdade70c42fb2c4cfcd8155b85c472))
+
+- If statement
+  ([`caefdef`](https://github.com/JamesAFarrell/my-python-package-2/commit/caefdef6c65d3283cfb96ae31ba6eb49797be6aa))
+
+- Remove paths
+  ([`e106cdd`](https://github.com/JamesAFarrell/my-python-package-2/commit/e106cddf6140ecf5605c4ced284087d34d581eb0))
+
+- Ruff format
+  ([`611865e`](https://github.com/JamesAFarrell/my-python-package-2/commit/611865e11ed5e75b3618832c3c07e6134133c091))
+
+- Try again
+  ([`a180c1f`](https://github.com/JamesAFarrell/my-python-package-2/commit/a180c1f0773fed12d337ce282894b89e6d2b0f1a))
+
+- Try again
+  ([`ccca749`](https://github.com/JamesAFarrell/my-python-package-2/commit/ccca7498fb967c490719855ca17b43a4421f7ffb))
+
+- Try again
+  ([`21bb000`](https://github.com/JamesAFarrell/my-python-package-2/commit/21bb000be9e6138da7effe37c7693a929fdada59))
+
+- Try again
+  ([`443a4fb`](https://github.com/JamesAFarrell/my-python-package-2/commit/443a4fb6a83cf78a8de71d7e869de12a6bdf5a03))
+
+- Try individual
+  ([`9d4fc6e`](https://github.com/JamesAFarrell/my-python-package-2/commit/9d4fc6e4dc89f6e36244345b440d392d0a989ff4))
+
+- Try without if
+  ([`5410808`](https://github.com/JamesAFarrell/my-python-package-2/commit/5410808004a8a7c766651c8e00d0e631410a065b))
+
+### Continuous Integration
+
+- Adapt workflows
+  ([`7aa4c71`](https://github.com/JamesAFarrell/my-python-package-2/commit/7aa4c717c5be5b228716ba2a3a146cb085ccedb1))
+
+- Add ruff workflow
+  ([`2abef6c`](https://github.com/JamesAFarrell/my-python-package-2/commit/2abef6ca9403dabbeb739e19beb1cd6c09ff6976))
+
+- Add test when push to dev
+  ([`8068526`](https://github.com/JamesAFarrell/my-python-package-2/commit/8068526702e61834f6eeeda5f1811eaa5f6e7e21))
+
+### Features
+
+- Add ruff lint check and format check
+  ([`6016a3c`](https://github.com/JamesAFarrell/my-python-package-2/commit/6016a3ca2fad91e53a350f8fef5be5405d2eb6ee))
+
+- Add tests
+  ([`a8eed23`](https://github.com/JamesAFarrell/my-python-package-2/commit/a8eed238c3236a9484142a0af6c5848b7e430a63))
+
+- Update with cache
+  ([`e3eda7b`](https://github.com/JamesAFarrell/my-python-package-2/commit/e3eda7beeb8d2b9e0a89e1dc991af46e1de69bd1))
+
+
 ## v1.8.0 (2025-08-05)
 
 ### Features
