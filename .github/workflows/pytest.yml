@@ -1,15 +1,15 @@
-name: Test Feature Branches
+name: Run Pytest After Lint
 
 on:
-  push:
-    branches:
-      - dev
-  pull_request:
-    branches:
-      - dev
+  workflow_run:
+    workflows: ["Ruff Lint and Format Check"]
+    types:
+      - completed
 
 jobs:
   test:
+    if: github.event.workflow_run.conclusion == 'success'
+    continue-on-error: false
     runs-on: ubuntu-latest
 
     steps:
