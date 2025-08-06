@@ -61,8 +61,8 @@ def round_counts_to_multiple(
 
     # Round each specified column to the nearest multiple
     for col in columns:
-        df = df.withColumn(col, F.round(F.col(col) / multiple) * multiple)
-
+        df = df.withColumn(col, (F.round(F.col(col) / multiple) * multiple).cast("long"))
+        
     return df
 
 
