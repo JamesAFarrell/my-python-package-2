@@ -2,6 +2,29 @@
 
 <!-- version list -->
 
+## v1.9.1 (2025-08-07)
+
+### Bug Fixes
+
+- Delete workflows
+  ([`f424289`](https://github.com/JamesAFarrell/my-python-package-2/commit/f42428903439fcba0835384fe7925cd14d57f791))
+
+- Drop push ([#19](https://github.com/JamesAFarrell/my-python-package-2/pull/19),
+  [`66176d9`](https://github.com/JamesAFarrell/my-python-package-2/commit/66176d995be6310cba2157a1646e6c9d199a14de))
+
+- Drop push ([#18](https://github.com/JamesAFarrell/my-python-package-2/pull/18),
+  [`ae3c1ed`](https://github.com/JamesAFarrell/my-python-package-2/commit/ae3c1ed92fea2c4c14f33824ed0f9ace9ccb9398))
+
+- Remove
+  ([`4d02c25`](https://github.com/JamesAFarrell/my-python-package-2/commit/4d02c25040bacb5f55629c6cd6c479e95352cbc4))
+
+- Try now
+  ([`a7f2042`](https://github.com/JamesAFarrell/my-python-package-2/commit/a7f2042b7cf5cde79c5bd04b11c2c024f91af79d))
+
+- Try this set up
+  ([`bb5f511`](https://github.com/JamesAFarrell/my-python-package-2/commit/bb5f5117d9ba8b5b56f573d28cc420f0bc5c6c5f))
+
+
 ## v1.9.0 (2025-08-06)
 
 ### Bug Fixes
