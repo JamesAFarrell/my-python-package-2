@@ -1,11 +1,11 @@
-name: Lint & Test
+name: Dev - Lint & Test 
 
 on:
   pull_request:
     branches: [dev]
     
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   lint:
