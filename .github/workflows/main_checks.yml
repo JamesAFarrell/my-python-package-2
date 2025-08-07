@@ -1,8 +1,6 @@
-name: Lint, Test, Release & Sync
+name: main - Lint & Test
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
