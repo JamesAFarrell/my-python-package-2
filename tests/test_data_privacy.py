@@ -1,4 +1,4 @@
-"""Unit tests for data_privacy.py. 
+"""Unit tests for data_privacy.py.
 
 These tests validate the correctness of functions for rounding and redacting
 sensitive numeric data in Spark DataFrames, including:
